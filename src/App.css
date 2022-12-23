@@ -1,0 +1,14 @@
+.general-flex-container {
+    display: flex;
+    justify-content: center;
+    flex-flow: wrap;
+    gap: 25px;
+    margin-bottom: 30px;
+}
+
+#app {
+    height: 100%;
+    width: 100%;
+    overflow:auto;
+    position:relative;
+}

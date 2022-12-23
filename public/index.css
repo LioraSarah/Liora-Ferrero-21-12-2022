@@ -1,0 +1,26 @@
+html {
+    box-sizing: border-box;
+    height: 100%;
+  }
+  *,
+  *:before,
+  *:after {
+    box-sizing: inherit;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  
+body {
+  margin: 0;
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background-color:rgb(245, 245, 245);
+  height: 100%;
+}
+
+li {
+  list-style: none;
+}
+
+#root {
+  height: 100%;
+}

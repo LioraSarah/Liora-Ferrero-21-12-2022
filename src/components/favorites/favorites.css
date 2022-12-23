@@ -1,0 +1,36 @@
+#fav-header {
+    margin-top: 70px;
+    margin-bottom: 50px;
+    text-transform: uppercase;
+    font-size: 1.8rem;
+    font-weight: 600;
+}
+
+.general-box {
+    border-radius: 7px;
+    box-shadow: 1px 1px 7px 0px rgba(0,0,0,0.4);
+    min-width: 200px;
+    background-color: rgba(255, 255, 255, 0.3);
+    padding: 20px 10px;
+}
+
+#favorites-container h3 {
+    text-transform: uppercase;
+}
+
+#remove-fav {
+    margin-bottom: 20px;
+}
+
+#favorites-container {
+    height: 100%; 
+    overflow: auto;
+    background-image: url(../../../media/fav.jpg);
+    background-size: cover;
+}
+
+#white-overlay {
+    height: 100%; 
+    overflow: auto;
+    background-color: rgba(255, 255, 255, 0.8);
+}

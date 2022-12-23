@@ -1,0 +1,54 @@
+#home-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding-top: 50px;
+    padding-bottom: 100px;
+    z-index: 2;
+    /* background-size: 150%; */
+    background-repeat: no-repeat;
+    background-size: cover;
+}
+
+.header-general {
+    font-size: 1.9rem;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.favorites-background {
+    background-image: url(../../../media/fav.jpg);
+}
+
+/* background style changes acoording to value of className */
+.sunny {
+    background-image: url(../../../media/sunny.jpg);
+}
+
+.partly-sunny {
+    background-image: url(../../../media/partly-sunny.jpg);
+}
+
+.cloudy {
+    background-image: url(../../../media/cloudy.jpg);
+}
+
+.rainy {
+    background-image: url(../../../media/rainy.jpg);
+}
+
+.snowy {
+    background-image: url(../../../media/snowy.jpg);
+}
+
+.night {
+    background-image: url(../../../media/night.jpg);
+}
+
+.night #general-weather-container {
+    color: white;
+}
+
+.night .heart {
+    color: white;
+}
