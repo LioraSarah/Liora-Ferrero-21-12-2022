@@ -54,5 +54,8 @@ input:focus {
 @media screen and (max-width: 425px) {
     .search-box-general {
         width: 290px;
-    }   
+    }
+    .city-li {
+        padding: 0.5rem 0;
+    }
 }

@@ -55,7 +55,7 @@ export const Search = () => {
     } else if (autocompletePreview && autocompletePreview.length > 0) {
         autocompleteDiv = <ul id="autocomplete-container" className="search-box-general">
                 {autocompletePreview.map((city) => (
-                    <li key={city.Key} id={city.Key} onClick={onClickHandler} >
+                    <li key={city.Key} id={city.Key} onClick={onClickHandler} className="city-li" >
                         {city.LocalizedName} , {city.Country.LocalizedName}
                     </li>
                 ))}
