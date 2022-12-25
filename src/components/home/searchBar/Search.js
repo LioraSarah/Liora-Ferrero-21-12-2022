@@ -1,5 +1,6 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import debounce from 'lodash.debounce';
 import { clearAutocomplete, setSearchTerm, clearSearchTerm, selectSearchTerm, loadAutocomplete, isLoading, selectAutocompleteList } from '../../../features/search/searchSlice.js';
 import "./Search.css"
 import clearIconUrl from "../../../media/close.png";
@@ -20,15 +21,15 @@ export const Search = () => {
         dispatch(loadAutocomplete({ text: searchTerm }));
     }, [dispatch, searchTerm]);
 
-    
-    const onSearchTermChangeHandler = (e) => {
+
+    const debounceSearchChangeHandler = debounce((e) => {
         const userInput = e.target.value;
         const english = /^[A-Za-z0-9]*$/;
         //only execute the action if english letters and numbers has been typed
         if (english.test(userInput)) {
             dispatch(setSearchTerm(userInput));
         }
-    };
+    }, 200);
 
     const onClearSearchTermHandler = () => {
         dispatch(clearSearchTerm());
@@ -73,7 +74,7 @@ export const Search = () => {
                     id="search"
                     type="text"
                     value={searchTerm}
-                    onChange={onSearchTermChangeHandler}
+                    onChange={debounceSearchChangeHandler}
                     className="search-box-general"
                     placeholder="Search a city..."
                     autoComplete="off"
