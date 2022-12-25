@@ -1,4 +1,4 @@
-export const API_ROOT = 'http://dataservice.accuweather.com';
+export const API_ROOT = 'https://dataservice.accuweather.com';
 
 const API_KEY = "pNTQH1SXJKJ3nEGYdAgnxx1y1n79mVq6";
 
