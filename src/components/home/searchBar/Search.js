@@ -29,7 +29,7 @@ export const Search = () => {
         if (english.test(userInput)) {
             dispatch(setSearchTerm(userInput));
         }
-    }, 200);
+    }, 500);
 
     const onClearSearchTermHandler = () => {
         dispatch(clearSearchTerm());
@@ -73,7 +73,6 @@ export const Search = () => {
                 <input
                     id="search"
                     type="text"
-                    value={searchTerm}
                     onChange={debounceSearchChangeHandler}
                     className="search-box-general"
                     placeholder="Search a city..."
