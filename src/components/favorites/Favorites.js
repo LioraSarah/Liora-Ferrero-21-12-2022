@@ -1,12 +1,13 @@
 import React from 'react';
 import { useSelector, useDispatch } from 'react-redux';
+import { useNavigate } from "react-router-dom";
 import { selectAllFavorites, removeFavorite } from '../../features/favorites/favoritesSlice';
 import { formatDate } from '../../helperFunctions/helpers';
 import { selectCurrentCityKey, setIsFavorite, setCurrentCityKey, setCurrentCityName } from "../../features/currentCity/correntCitySlice";
 import { clearSearchTerm } from '../../features/search/searchSlice.js';
 import { selectIsMetric } from '../../features/fiveDays/fiveDaysSlice';
 import './favorites.css';
-import { useNavigate } from "react-router-dom";
+
 
 export const Favorites = () => {
 

@@ -5,7 +5,6 @@
     padding-top: 50px;
     padding-bottom: 100px;
     z-index: 2;
-    /* background-size: 150%; */
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -17,32 +16,32 @@
 }
 
 .favorites-background {
-    background-image: url(../../../media/fav.jpg);
+    background-image: url(../../media/fav.jpg);
 }
 
 /* background style changes acoording to value of className */
 .sunny {
-    background-image: url(../../../media/sunny.jpg);
+    background-image: url(../../media/sunny.jpg);
 }
 
 .partly-sunny {
-    background-image: url(../../../media/partly-sunny.jpg);
+    background-image: url(../../media/partly-sunny.jpg);
 }
 
 .cloudy {
-    background-image: url(../../../media/cloudy.jpg);
+    background-image: url(../../media/cloudy.jpg);
 }
 
 .rainy {
-    background-image: url(../../../media/rainy.jpg);
+    background-image: url(../../media/rainy.jpg);
 }
 
 .snowy {
-    background-image: url(../../../media/snowy.jpg);
+    background-image: url(../../media/snowy.jpg);
 }
 
 .night {
-    background-image: url(../../../media/night.jpg);
+    background-image: url(../../media/night.jpg);
 }
 
 .night #general-weather-container {
@@ -51,4 +50,8 @@
 
 .night .heart {
     color: white;
+}
+
+.night .heart:hover {
+    color: red;
 }

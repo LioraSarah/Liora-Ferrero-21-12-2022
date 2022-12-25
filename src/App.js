@@ -1,16 +1,14 @@
 import React from 'react';
-import './App.css';
+import { Routes, Route } from "react-router-dom";
+import { useDispatch, useSelector } from 'react-redux';
 import { Header } from './components/header/Header';
 import { Home } from './components/home/Home';
 import { Favorites } from './components/favorites/Favorites';
-import { Routes, Route } from "react-router-dom";
-import { useDispatch, useSelector } from 'react-redux';
 import { clearAutocomplete, selectAutocompleteList } from './features/search/searchSlice.js';
 import { loadCurrentCondition, selectCurrentCityKey } from './features/currentCity/correntCitySlice';
 import { loadFiveDays, selectIsMetric } from './features/fiveDays/fiveDaysSlice';
 import { useLocation } from 'react-router-dom';
-//import { toast } from 'react-toastify';
-//import 'react-toastify/dist/react-toastify.css';
+import './App.css';
 
 
 function App() {

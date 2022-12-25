@@ -22,13 +22,8 @@ export const chooseClassName = (weatherNum) => {
 };
 
 export const searchFavorite = (cityKey, favoritesArray) => {
-    for (let i=0; i<favoritesArray.length; i++) {
-        if (cityKey === favoritesArray[i].key) {
-            return i;
-        }
-    }
-    return -1;
-}
+    return favoritesArray.findIndex((element) => element.key === cityKey);
+};
 
 export const getUnit = (currentCondition, isMetric) => {
     let temperature, unit;
@@ -44,4 +39,4 @@ export const getUnit = (currentCondition, isMetric) => {
 
 export const isNotEmptyObj = (obj) => {
    return (!(Object.keys(obj).length === 0 && obj.constructor === Object));
-}
+};

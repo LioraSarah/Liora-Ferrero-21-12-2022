@@ -1,10 +1,10 @@
 import React from 'react';
 import { useSelector } from 'react-redux';
-import "./Home.css";
 import { Search } from './searchBar/Search';
 import { WeatherPreview } from './weatherPreview/WeatherPreview';
-import { chooseClassName, isNotEmptyObj } from '../../helperFunctions/helpers';
 import { selectCurrentCondition } from '../../features/currentCity/correntCitySlice';
+import { chooseClassName, isNotEmptyObj } from '../../helperFunctions/helpers';
+import "./Home.css";
 
 
 export const Home = () => {

@@ -29,7 +29,6 @@ export const Header = () => {
     };
 
     const onClickMetricHandler = () => {
-        console.log(isMetric);
         if (isMetric) {
             dispatch(setIsMetric(false));
         } else {
@@ -39,13 +38,15 @@ export const Header = () => {
 
     return (
         <header className="navbar">
-            <div className="logo">
-                Weather App
-            </div>
-            <div className="toggle-button" onClick={onClickToggleHandler}>
-                <span className="bar"></span>
-                <span className="bar"></span>
-                <span className="bar"></span>
+            <div className='responsive-nav'>
+                <div className="logo">
+                    Weather App
+                </div>
+                <div className="toggle-button" onClick={onClickToggleHandler}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
             </div>
             <div className="navbar-links">
                 <ul id="menu-list">

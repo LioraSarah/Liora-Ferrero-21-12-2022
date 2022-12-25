@@ -2,11 +2,11 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import debounce from 'lodash.debounce';
 import { clearAutocomplete, setSearchTerm, clearSearchTerm, selectSearchTerm, loadAutocomplete, isLoading, selectAutocompleteList } from '../../../features/search/searchSlice.js';
-import "./Search.css"
-import clearIconUrl from "../../../media/close.png";
 import { setCurrentCityName, setCurrentCityKey, setIsFavorite } from '../../../features/currentCity/correntCitySlice';
 import { searchFavorite } from '../../../helperFunctions/helpers';
 import { selectAllFavorites } from '../../../features/favorites/favoritesSlice';
+import "./Search.css";
+
 
 export const Search = () => {
 
@@ -30,10 +30,6 @@ export const Search = () => {
             dispatch(setSearchTerm(userInput));
         }
     }, 500);
-
-    const onClearSearchTermHandler = () => {
-        dispatch(clearSearchTerm());
-    };
 
     const onClickHandler = (e) => {
         // console.log(e);
@@ -78,15 +74,6 @@ export const Search = () => {
                     placeholder="Search a city..."
                     autoComplete="off"
                 />
-                {searchTerm.length > 0 && (
-                    <button
-                        onClick={onClearSearchTermHandler}
-                        type="button"
-                        id="search-clear-button"
-                    >
-                        <img src={clearIconUrl} alt="X" id='search-clear-icon' />
-                    </button>
-                )}
             </div>
 
             {autocompleteDiv}

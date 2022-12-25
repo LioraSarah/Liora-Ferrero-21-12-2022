@@ -1,11 +1,11 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectHasError, selectIsFavorite, setIsFavorite, selectCurrentCityName, selectCurrentCityKey, selectCurrentCondition, isLoadingCurrentCity, loadCurrentCondition } from '../../../features/currentCity/correntCitySlice';
-import { formatDate, searchFavorite, getUnit, isNotEmptyObj } from '../../../helperFunctions/helpers';
-import { selectIsMetric } from '../../../features/fiveDays/fiveDaysSlice';
-import { FiveDays } from './fiveDays/FiveDays';
-import { addFavorite, selectAllFavorites, removeFavorite } from '../../../features/favorites/favoritesSlice';
 import { FiHeart } from 'react-icons/fi';
+import { FiveDays } from './fiveDays/FiveDays';
+import { selectHasError, selectIsFavorite, setIsFavorite, selectCurrentCityName, selectCurrentCityKey, selectCurrentCondition, isLoadingCurrentCity, loadCurrentCondition } from '../../../features/currentCity/correntCitySlice';
+import { selectIsMetric } from '../../../features/fiveDays/fiveDaysSlice';
+import { addFavorite, selectAllFavorites, removeFavorite } from '../../../features/favorites/favoritesSlice';
+import { formatDate, searchFavorite, getUnit, isNotEmptyObj } from '../../../helperFunctions/helpers';
 import "./weatherPreview.css";
 
 export const WeatherPreview = () => {

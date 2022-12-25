@@ -1,9 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadFiveDays, isLoadingFiveDays, selectFiveDays, selectIsMetric, selectHasError } from '../../../../features/fiveDays/fiveDaysSlice.js';
-import "./fiveDays.css"
 import { selectCurrentCityKey } from '../../../../features/currentCity/correntCitySlice';
 import { formatDate, isNotEmptyObj } from '../../../../helperFunctions/helpers';
+import "./fiveDays.css"
 
 
 export const FiveDays = () => {
