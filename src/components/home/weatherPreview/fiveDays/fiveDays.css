@@ -1,12 +1,3 @@
-
-/*media queries*/
-@media screen and (max-width: 1120px) {
-    #five-days-container {
-      max-width: 870px;
-      margin: 0 auto;
-    }
-}
-
 .day-name {
   font-size: 1.3rem;
 }
@@ -17,4 +8,17 @@
   min-width: 200px;
   background-color: rgba(255, 255, 255, 0.3);
   padding: 20px 10px;
+}
+
+.to-style {
+  /* font-style: italic; */
+  font-weight: 800;
+}
+
+/*media queries*/
+@media screen and (max-width: 1120px) {
+  #five-days-container {
+    max-width: 870px;
+    margin: 0 auto;
+  }
 }

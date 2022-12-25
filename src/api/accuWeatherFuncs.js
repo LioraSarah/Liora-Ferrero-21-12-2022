@@ -1,6 +1,6 @@
 export const API_ROOT = 'http://dataservice.accuweather.com';
 
-const API_KEY = "NZOiXkbs4AJW2kMFSUG69YkbIRsFN33n";
+const API_KEY = "pNTQH1SXJKJ3nEGYdAgnxx1y1n79mVq6";
 
 export const getAutocomplete = async (payload) => {
   const url = `${API_ROOT}/locations/v1/cities/autocomplete`;
@@ -18,7 +18,6 @@ export const getCurrentCondition = async (payload) => {
   const response = await fetch(url + query);
   const responseJSON = await response.json();
   return responseJSON;
-
 };
 
 export const getFiveDays = async (payload) => {
@@ -29,7 +28,5 @@ export const getFiveDays = async (payload) => {
   const query = `${cityKey}?apikey=${API_KEY}&metric=${isMetric}`;
   const response = await fetch(url + query);
   const responseJSON = await response.json();
-  // console.log(responseJSON);
   return responseJSON;
-
 };

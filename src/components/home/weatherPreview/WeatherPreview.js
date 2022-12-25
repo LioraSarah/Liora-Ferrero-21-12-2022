@@ -1,7 +1,8 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsMetric, selectIsFavorite, setIsFavorite, selectCurrentCityName, selectCurrentCityKey, selectCurrentCondition, isLoadingCurrentCity, loadCurrentCondition } from '../../../features/currentCity/correntCitySlice';
+import { selectIsFavorite, setIsFavorite, selectCurrentCityName, selectCurrentCityKey, selectCurrentCondition, isLoadingCurrentCity, loadCurrentCondition } from '../../../features/currentCity/correntCitySlice';
 import { formatDate, searchFavorite } from '../../../helperFunctions/helpers';
+import { selectIsMetric } from '../../../features/fiveDays/fiveDaysSlice';
 import { FiveDays } from './fiveDays/FiveDays';
 import { addFavorite, selectAllFavorites, removeFavorite } from '../../../features/favorites/favoritesSlice';
 import { FiHeart } from 'react-icons/fi';
@@ -50,7 +51,7 @@ export const WeatherPreview = () => {
     let formattedDate;
     let currentHour, currentMinutes, weatherText, temperature, unit = '';
 
-    //check if the current city was already rendered, then assign values
+    //check if the current city was already rendered, then assign temperature and hour values
     if (!(Object.keys(currentCondition).length === 0 && currentCondition.constructor === Object)) {
         weatherText = currentCondition.WeatherText;
         if (isMetric) {
@@ -78,7 +79,7 @@ export const WeatherPreview = () => {
                     {addFavoriteElment}
                     <h2 id="city-name" className='header-general'>{cityName}</h2>
                     <p id="weather-text">{weatherText}</p>
-                    <p>Current temperature is : {temperature} {unit}</p>
+                    <p>Current temperature is : {temperature}<span className="unit-style">{unit}</span></p>
                     <p>Current time is : {currentHour + ":" + currentMinutes}</p>
                 </div>
                 <div id="five-days">

@@ -2,7 +2,8 @@ import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import { loadFiveDays, isLoadingFiveDays, selectFiveDays } from '../../../../features/fiveDays/fiveDaysSlice.js';
 import "./fiveDays.css"
-import { selectCurrentCityKey, selectIsMetric } from '../../../../features/currentCity/correntCitySlice';
+import { selectCurrentCityKey } from '../../../../features/currentCity/correntCitySlice';
+import { selectIsMetric } from '../../../../features/fiveDays/fiveDaysSlice';
 import { formatDate } from '../../../../helperFunctions/helpers';
 
 
@@ -13,10 +14,11 @@ export const FiveDays = () => {
     const isMetric = useSelector(selectIsMetric);
     const dispatch = useDispatch();
     const loadingFiveDays = useSelector(isLoadingFiveDays);
+    let daysList = [];
 
-    useEffect(() => {
+    useEffect(()=>{
         dispatch(loadFiveDays({ key: cityKey, isMetric: isMetric }));
-    }, [dispatch, cityKey]);
+    }, [dispatch, cityKey, isMetric]);
 
     if (loadingFiveDays) {
         return <div id="loading-container">
@@ -24,7 +26,10 @@ export const FiveDays = () => {
         </div>;
     }
 
-    const daysList = fiveDaysObj.DailyForecasts;
+    //check if five days forecast has rendered, then get the forecast list
+    if (!(Object.keys(fiveDaysObj).length === 0 && fiveDaysObj.constructor === Object)) {
+        daysList = fiveDaysObj.DailyForecasts;
+    }
 
     //helper
     const getDayName = (date) => {
@@ -57,7 +62,7 @@ export const FiveDays = () => {
             {daysList.map((day, i) => (
                 <div key={i} className="days-container">
                     <h3 className="day-name">{getDayName(day.Date)}</h3>
-                    <p>{day.Temperature.Minimum.Value} - {day.Temperature.Maximum.Value} {day.Temperature.Maximum.Unit}</p>
+                    <p>{day.Temperature.Minimum.Value}<span className="unit-style">{day.Temperature.Maximum.Unit}</span> <span className='to-style'>~</span> {day.Temperature.Maximum.Value}<span className="unit-style">{day.Temperature.Maximum.Unit}</span></p>
                     <div className="days-box">
                         <div className="day-container">
                             <h4>Day</h4>

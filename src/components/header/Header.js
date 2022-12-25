@@ -1,29 +1,43 @@
 import './Header.css';
 import { NavLink } from "react-router-dom";
-// import logo from "../../media/logo.png";
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsMetric, setIsMetric } from '../../features/currentCity/correntCitySlice';
+import { selectIsMetric, setIsMetric } from '../../features/fiveDays/fiveDaysSlice';
 
 export const Header = () => {
 
     const isMetric = useSelector(selectIsMetric);
     const dispatch = useDispatch();
+    const navbarLinks = document.getElementsByClassName('navbar-links')[0]
 
-    const onClickHandler = () => {
+    //make interactive menu
+    const onClickToggleHandler = () => {
+        if (navbarLinks.id === 'active') {
+            navbarLinks.id = '';
+        } else {
+            navbarLinks.id = 'active';
+        }
+    };
+
+    const onClickMetricHandler = () => {
+        console.log(isMetric);
         if (isMetric) {
             dispatch(setIsMetric(false));
         } else {
             dispatch(setIsMetric(true));
         }
-    }
+    };
 
     return (
-        <header>
-            <div id="flex-container">
-                <div id="logo">
-                    <h2 id="logo-text">Weather App</h2>
+        <header className="navbar">
+                <div className="logo">
+                    Weather App
                 </div>
-                <div id="menu">
+                <div className="toggle-button" onClick={onClickToggleHandler}>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                    <span className="bar"></span>
+                </div>
+                <div className="navbar-links">
                     <ul id="menu-list">
                         <li>
                             <NavLink to="/">
@@ -35,14 +49,11 @@ export const Header = () => {
                                 Favorites
                             </NavLink>
                         </li>
-                        <li>
-                            <div onClick={onClickHandler}>
-                                set Metric
-                            </div>
+                        <li onClick={onClickMetricHandler}>
+                            <NavLink>set Metric</NavLink>
                         </li>
                     </ul>
                 </div>
-            </div>
         </header>
     )
 }

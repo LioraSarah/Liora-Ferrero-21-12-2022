@@ -52,10 +52,7 @@
     margin-top: 10px;
 }
 
-/*media queries*/
-@media screen and (max-width: 992px) {
-    body {
-      background-color: rgb(163, 214, 255);
-    }
+.unit-style {
+    font-size: 0.8rem;
+    font-weight: 600;
 }
-

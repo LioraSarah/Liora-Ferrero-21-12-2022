@@ -11,10 +11,10 @@ export const Home = () => {
   const currentCondition = useSelector(selectCurrentCondition);
   let weatherClass = '';
 
-//check if the current city was already rendered, then assign values
-if (!(Object.keys(currentCondition).length === 0 && currentCondition.constructor === Object)) {
-  weatherClass = chooseClassName(currentCondition.WeatherIcon);
-}
+  //check if the current city was already rendered, then assign className values for interactive background
+  if (!(Object.keys(currentCondition).length === 0 && currentCondition.constructor === Object)) {
+    weatherClass = chooseClassName(currentCondition.WeatherIcon);
+  }
 
   return (
     <section id='home-container' className={weatherClass}>

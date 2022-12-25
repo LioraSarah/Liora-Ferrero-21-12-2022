@@ -6,8 +6,8 @@ import { Favorites } from './components/favorites/Favorites';
 import { Routes, Route } from "react-router-dom";
 import { useDispatch, useSelector } from 'react-redux';
 import { clearAutocomplete, selectAutocompleteList } from './features/search/searchSlice.js';
-import { loadCurrentCondition, selectCurrentCityKey, selectIsMetric } from './features/currentCity/correntCitySlice';
-import { loadFiveDays } from './features/fiveDays/fiveDaysSlice';
+import { loadCurrentCondition, selectCurrentCityKey } from './features/currentCity/correntCitySlice';
+import { loadFiveDays, selectIsMetric } from './features/fiveDays/fiveDaysSlice';
 import { useLocation } from 'react-router-dom';
 
   
@@ -22,7 +22,7 @@ function App() {
   const isMetric = useSelector(selectIsMetric);
 
   React.useEffect(() => {
-    console.log(cityKey);
+    //load currentCondition everytime we route to home
     if (location.pathname === '/') {
       dispatch(loadCurrentCondition({ key: cityKey }));
       dispatch(loadFiveDays({ key: cityKey, isMetric: isMetric }));
@@ -30,6 +30,7 @@ function App() {
   }, [dispatch, location, cityKey, isMetric]);
 
   const onClickHandler = (e) => {
+    //make autocomplete disappear when clicking on any place in the app except autocomplete itself
     if (autocompleteList.length > 0 && e.target.id !== 'autocomplete-container' && e.target.parentNode.id !== 'autocomplete-container') {
         dispatch(clearAutocomplete());
     }

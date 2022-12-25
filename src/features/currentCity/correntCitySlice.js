@@ -13,29 +13,6 @@ export const loadCurrentCondition = createAsyncThunk(
 
 const defaultCity = 'Tel Aviv';
 const defaultCityKey = '215854';
-// const defaultCityCondition = {
-//   "LocalObservationDateTime": "2022-12-21T08:13:00+02:00",
-//   "EpochTime": 1671603180,
-//   "WeatherText": "Partly sunny",
-//   "WeatherIcon": 3,
-//   "HasPrecipitation": false,
-//   "PrecipitationType": null,
-//   "IsDayTime": true,
-//   "Temperature": {
-//     "Metric": {
-//       "Value": 15,
-//       "Unit": "C",
-//       "UnitType": 17
-//     },
-//     "Imperial": {
-//       "Value": 59,
-//       "Unit": "F",
-//       "UnitType": 18
-//     }
-//   },
-//   "MobileLink": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us",
-//   "Link": "http://www.accuweather.com/en/il/tel-aviv/215854/current-weather/215854?lang=en-us"
-// };
 
 export const currentCitySlice = createSlice({
     name: 'currentCity',
@@ -46,7 +23,6 @@ export const currentCitySlice = createSlice({
       isLoadingCurrentCondition: false,
       hasError: false,
       isFavorite: false,
-      isMetric: true
     },
     reducers: {
         setCurrentCityKey(state, action) {
@@ -57,9 +33,6 @@ export const currentCitySlice = createSlice({
         },
         setIsFavorite(state, action) {
           state.isFavorite = action.payload;
-        },
-        setIsMetric(state, action) {
-          state.isMetric = action.payload;
         }
     },
     extraReducers: (builder) => {
@@ -87,8 +60,7 @@ export const selectCurrentCityName = (state) => state.currentCity.currentCityNam
 export const isLoadingCurrentCity = (state) => state.currentCity.isLoadingCurrentCondition;
 export const selectIsFavorite = (state) => state.currentCity.isFavorite;
 export const selectCurrentCondition = (state) => state.currentCity.cityCondition;
-export const selectIsMetric = (state) => state.currentCity.isMetric;
 //actions
-export const {setCurrentCityKey, setCurrentCityName, clearCurrentCityName, setIsFavorite, setIsMetric} = currentCitySlice.actions;
+export const {setCurrentCityKey, setCurrentCityName, clearCurrentCityName, setIsFavorite} = currentCitySlice.actions;
 //reducer
 export default currentCitySlice.reducer;

@@ -23,7 +23,11 @@ export const Search = () => {
     
     const onSearchTermChangeHandler = (e) => {
         const userInput = e.target.value;
-        dispatch(setSearchTerm(userInput));
+        const english = /^[A-Za-z0-9]*$/;
+        //only execute the action if english letters and numbers has been typed
+        if (english.test(userInput)) {
+            dispatch(setSearchTerm(userInput));
+        }
     };
 
     const onClearSearchTermHandler = () => {
@@ -38,6 +42,7 @@ export const Search = () => {
         dispatch(setCurrentCityKey(clickedCityKey));
         dispatch(setCurrentCityName(clickedCityName));
         dispatch(clearAutocomplete());
+        //update the state according to if it's saved in favorite
         if (isFavorite >= 0) {
             dispatch(setIsFavorite(true));
         } else {
