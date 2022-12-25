@@ -11,7 +11,7 @@ export const Header = () => {
     const currentCondition = useSelector(selectCurrentCondition);
     const dispatch = useDispatch();
     const navbarLinks = document.getElementsByClassName('navbar-links')[0];
-    let unit = '';
+    let unit = 'C';
 
     //check if the current city was already rendered, then assign temperature and hour values
     if (isNotEmptyObj(currentCondition)) {
