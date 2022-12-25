@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectIsFavorite, setIsFavorite, selectCurrentCityName, selectCurrentCityKey, selectCurrentCondition, isLoadingCurrentCity, loadCurrentCondition } from '../../../features/currentCity/correntCitySlice';
-import { formatDate, searchFavorite } from '../../../helperFunctions/helpers';
+import { selectHasError, selectIsFavorite, setIsFavorite, selectCurrentCityName, selectCurrentCityKey, selectCurrentCondition, isLoadingCurrentCity, loadCurrentCondition } from '../../../features/currentCity/correntCitySlice';
+import { formatDate, searchFavorite, getUnit, isNotEmptyObj } from '../../../helperFunctions/helpers';
 import { selectIsMetric } from '../../../features/fiveDays/fiveDaysSlice';
 import { FiveDays } from './fiveDays/FiveDays';
 import { addFavorite, selectAllFavorites, removeFavorite } from '../../../features/favorites/favoritesSlice';
@@ -17,6 +17,7 @@ export const WeatherPreview = () => {
     const isLoadingCurrentCondition = useSelector(isLoadingCurrentCity);
     const favoritesList = useSelector(selectAllFavorites);
     const isMetric = useSelector(selectIsMetric);
+    const hasError = useSelector(selectHasError);
     const dispatch = useDispatch();
     let addFavoriteElment;
 
@@ -28,9 +29,16 @@ export const WeatherPreview = () => {
 
     if (isLoadingCurrentCondition) {
         return (<div id="loading-container">
-            <p id="loading">loading current condition...</p>
+            <p className="loading">loading current condition...</p>
         </div>);
-    }
+    };
+
+    if(hasError) {
+        return (
+            <div className="error-container">
+            <h4 className="error">Sorry, there was an error fetching the data :(</h4>
+        </div>)
+    };
 
     const onClickHandler = () => {
         const isFavorite = searchFavorite(cityKey, favoritesList);
@@ -52,15 +60,11 @@ export const WeatherPreview = () => {
     let currentHour, currentMinutes, weatherText, temperature, unit = '';
 
     //check if the current city was already rendered, then assign temperature and hour values
-    if (!(Object.keys(currentCondition).length === 0 && currentCondition.constructor === Object)) {
+    if (isNotEmptyObj(currentCondition)) {
         weatherText = currentCondition.WeatherText;
-        if (isMetric) {
-            temperature = currentCondition.Temperature.Metric.Value;
-            unit = currentCondition.Temperature.Metric.Unit;
-        } else {
-            temperature = currentCondition.Temperature.Imperial.Value;
-            unit = currentCondition.Temperature.Imperial.Unit;
-        }
+        const unitObj = getUnit(currentCondition, isMetric);
+        temperature = unitObj.temperature;
+        unit = unitObj.unit;
         formattedDate = formatDate(currentCondition.LocalObservationDateTime);
         currentHour = formattedDate.getHours();
         currentMinutes = formattedDate.getMinutes();

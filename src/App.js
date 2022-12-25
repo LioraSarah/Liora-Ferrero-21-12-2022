@@ -9,8 +9,8 @@ import { clearAutocomplete, selectAutocompleteList } from './features/search/sea
 import { loadCurrentCondition, selectCurrentCityKey } from './features/currentCity/correntCitySlice';
 import { loadFiveDays, selectIsMetric } from './features/fiveDays/fiveDaysSlice';
 import { useLocation } from 'react-router-dom';
-
-  
+//import { toast } from 'react-toastify';
+//import 'react-toastify/dist/react-toastify.css';
 
 
 function App() {

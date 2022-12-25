@@ -29,3 +29,19 @@ export const searchFavorite = (cityKey, favoritesArray) => {
     }
     return -1;
 }
+
+export const getUnit = (currentCondition, isMetric) => {
+    let temperature, unit;
+    if (isMetric) {
+        temperature = currentCondition.Temperature.Metric.Value;
+        unit = currentCondition.Temperature.Metric.Unit;
+    } else {
+        temperature = currentCondition.Temperature.Imperial.Value;
+        unit = currentCondition.Temperature.Imperial.Unit;
+    }
+    return {temperature: temperature, unit: unit};
+};
+
+export const isNotEmptyObj = (obj) => {
+   return (!(Object.keys(obj).length === 0 && obj.constructor === Object));
+}

@@ -1,10 +1,9 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
-import { loadFiveDays, isLoadingFiveDays, selectFiveDays } from '../../../../features/fiveDays/fiveDaysSlice.js';
+import { loadFiveDays, isLoadingFiveDays, selectFiveDays, selectIsMetric, selectHasError } from '../../../../features/fiveDays/fiveDaysSlice.js';
 import "./fiveDays.css"
 import { selectCurrentCityKey } from '../../../../features/currentCity/correntCitySlice';
-import { selectIsMetric } from '../../../../features/fiveDays/fiveDaysSlice';
-import { formatDate } from '../../../../helperFunctions/helpers';
+import { formatDate, isNotEmptyObj } from '../../../../helperFunctions/helpers';
 
 
 export const FiveDays = () => {
@@ -12,8 +11,9 @@ export const FiveDays = () => {
     const cityKey = useSelector(selectCurrentCityKey);
     const fiveDaysObj = useSelector(selectFiveDays);
     const isMetric = useSelector(selectIsMetric);
-    const dispatch = useDispatch();
+    const hasError = useSelector(selectHasError);
     const loadingFiveDays = useSelector(isLoadingFiveDays);
+    const dispatch = useDispatch();
     let daysList = [];
 
     useEffect(()=>{
@@ -26,8 +26,15 @@ export const FiveDays = () => {
         </div>;
     }
 
+    if(hasError) {
+        return (
+            <div className="error-container">
+            <h4 className="error">Sorry, there was an error fetching the data :(</h4>
+        </div>)
+    };
+
     //check if five days forecast has rendered, then get the forecast list
-    if (!(Object.keys(fiveDaysObj).length === 0 && fiveDaysObj.constructor === Object)) {
+    if (isNotEmptyObj(fiveDaysObj)) {
         daysList = fiveDaysObj.DailyForecasts;
     }
 

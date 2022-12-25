@@ -47,6 +47,7 @@ export const fiveDaysSlice = createSlice({
 export const isLoadingFiveDays = (state) => state.fiveDays.isLoadingCurrentCondition;
 export const selectFiveDays = (state) => state.fiveDays.fiveDaysForecast;
 export const selectIsMetric = (state) => state.fiveDays.isMetric;
+export const selectHasError = (state) => state.fiveDays.hasError;
 //actions
 export const { setIsMetric} = fiveDaysSlice.actions;
 //reducer

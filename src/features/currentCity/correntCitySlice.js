@@ -22,6 +22,7 @@ export const currentCitySlice = createSlice({
       cityCondition: {},
       isLoadingCurrentCondition: false,
       hasError: false,
+      errorMessage: '',
       isFavorite: false,
     },
     reducers: {
@@ -45,9 +46,10 @@ export const currentCitySlice = createSlice({
             state.isLoadingCurrentCondition = false;
             state.cityCondition = action.payload;
           })
-          .addCase(loadCurrentCondition.rejected, (state) => {
+          .addCase(loadCurrentCondition.rejected, (state, {error}) => {
             state.isLoadingCurrentCondition = false;
             state.hasError = true;
+            state.errorMessage = error.message;
             state.cityCondition = {};
           })
       }
@@ -60,6 +62,7 @@ export const selectCurrentCityName = (state) => state.currentCity.currentCityNam
 export const isLoadingCurrentCity = (state) => state.currentCity.isLoadingCurrentCondition;
 export const selectIsFavorite = (state) => state.currentCity.isFavorite;
 export const selectCurrentCondition = (state) => state.currentCity.cityCondition;
+export const selectHasError = (state) => state.currentCity.hasError;
 //actions
 export const {setCurrentCityKey, setCurrentCityName, clearCurrentCityName, setIsFavorite} = currentCitySlice.actions;
 //reducer
