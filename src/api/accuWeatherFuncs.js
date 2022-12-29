@@ -1,6 +1,6 @@
 export const API_ROOT = 'https://dataservice.accuweather.com';
 
-const API_KEY = "niFokKYkYn5i4uyqWSW7upt5XJ0nVCec";
+const API_KEY = "5lvNkKv8Kxk625lgpzt4KXa8hy3CDNi9";
 
 export const getAutocomplete = async (payload) => {
   const url = `${API_ROOT}/locations/v1/cities/autocomplete`;
