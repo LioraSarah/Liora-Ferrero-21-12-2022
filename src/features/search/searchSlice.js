@@ -25,7 +25,7 @@ export const searchSlice = createSlice({
             state.searchTerm = action.payload
         },
         clearSearchTerm(state) {
-            state.searchTerm = ''
+            state.searchTerm = '';
         },
         clearAutocomplete(state) {
           state.autocompleteList = [];

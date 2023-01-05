@@ -11,15 +11,15 @@ export const Header = () => {
     const currentCondition = useSelector(selectCurrentCondition);
     const dispatch = useDispatch();
     const navbarLinks = document.getElementsByClassName('navbar-links')[0];
-    let unit = 'C';
+    let unit = 'C'; //default unit is celsiuse (for the change-unit button)
 
-    //check if the current city was already rendered, then assign temperature and hour values
+    //check if the current city was already rendered, then assign temperature values
     if (isNotEmptyObj(currentCondition)) {
         const unitObj = getUnit(currentCondition, isMetric);
         unit = unitObj.unit;
     }
 
-    //make interactive menu
+    //make responsive-interactive menu (only for small screens)
     const onClickToggleHandler = () => {
         if (navbarLinks.id === 'active') {
             navbarLinks.id = '';

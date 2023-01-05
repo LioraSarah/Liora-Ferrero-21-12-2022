@@ -4,8 +4,8 @@ import { FiHeart } from 'react-icons/fi';
 import { FiveDays } from './fiveDays/FiveDays';
 import { selectHasError, selectIsFavorite, setIsFavorite, selectCurrentCityName, selectCurrentCityKey, selectCurrentCondition, isLoadingCurrentCity, loadCurrentCondition } from '../../../features/currentCity/correntCitySlice';
 import { selectIsMetric } from '../../../features/fiveDays/fiveDaysSlice';
-import { addFavorite, selectAllFavorites, removeFavorite } from '../../../features/favorites/favoritesSlice';
-import { formatDate, searchFavorite, getUnit, isNotEmptyObj } from '../../../helperFunctions/helpers';
+import { addFavorite, removeFavorite } from '../../../features/favorites/favoritesSlice';
+import { formatDate, getUnit, isNotEmptyObj } from '../../../helperFunctions/helpers';
 import "./weatherPreview.css";
 
 export const WeatherPreview = () => {
@@ -15,7 +15,6 @@ export const WeatherPreview = () => {
     const currentCondition = useSelector(selectCurrentCondition);
     const isFavorite = useSelector(selectIsFavorite);
     const isLoadingCurrentCondition = useSelector(isLoadingCurrentCity);
-    const favoritesList = useSelector(selectAllFavorites);
     const isMetric = useSelector(selectIsMetric);
     const hasError = useSelector(selectHasError);
     const dispatch = useDispatch();
@@ -41,8 +40,8 @@ export const WeatherPreview = () => {
     };
 
     const onClickHandler = () => {
-        const isFavorite = searchFavorite(cityKey, favoritesList);
-        if (isFavorite < 0) {
+        //const isFavorite = searchFavorite(cityKey, favoritesList);
+        if (!isFavorite) {
             const favoriteObj = {
                 key: cityKey,
                 name: cityName,
@@ -71,9 +70,9 @@ export const WeatherPreview = () => {
     }
 
     if (isFavorite) {
-        addFavoriteElment = <div><FiHeart className="redHeart" onClick={onClickHandler} /></div>; //<div id="favorite-button" onClick={onClickHandler}>it is favorite</div>;
+        addFavoriteElment = <div><FiHeart className="redHeart" onClick={onClickHandler} /></div>;
     } else {
-        addFavoriteElment = <div><FiHeart className="heart" onClick={onClickHandler} /></div>; //<div id="favorite-button" onClick={onClickHandler}>add to favorites</div>;
+        addFavoriteElment = <div><FiHeart className="heart" onClick={onClickHandler} /></div>;
     }
 
     return (

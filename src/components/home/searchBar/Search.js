@@ -1,7 +1,7 @@
 import React, { useEffect } from 'react';
 import { useSelector, useDispatch } from 'react-redux';
 import debounce from 'lodash.debounce';
-import { clearAutocomplete, setSearchTerm, clearSearchTerm, selectSearchTerm, loadAutocomplete, isLoading, selectAutocompleteList } from '../../../features/search/searchSlice.js';
+import { clearAutocomplete, setSearchTerm, selectSearchTerm, loadAutocomplete, isLoading, selectAutocompleteList } from '../../../features/search/searchSlice.js';
 import { setCurrentCityName, setCurrentCityKey, setIsFavorite } from '../../../features/currentCity/correntCitySlice';
 import { searchFavorite } from '../../../helperFunctions/helpers';
 import { selectAllFavorites } from '../../../features/favorites/favoritesSlice';
@@ -10,7 +10,7 @@ import "./Search.css";
 
 export const Search = () => {
 
-    const searchTerm = useSelector(selectSearchTerm);
+    let searchTerm = useSelector(selectSearchTerm);
     const dispatch = useDispatch();
     const autocompletePreview = useSelector(selectAutocompleteList);
     const isLoadingAutocomplete = useSelector(isLoading);
@@ -50,10 +50,10 @@ export const Search = () => {
     //show Autocomplete only if the search-bar isn't empty and the data is fetched
     if (isLoadingAutocomplete) {
         autocompleteDiv = <div id="autocomplete-container" className="search-box-general">
-            <p id="loading">loading...</p>
+            <p id="loading" className="autocomplete-container search-box-general">loading...</p>
         </div>;
     } else if (autocompletePreview && autocompletePreview.length > 0) {
-        autocompleteDiv = <ul id="autocomplete-container" className="search-box-general">
+        autocompleteDiv = <ul className="autocomplete-container search-box-general">
                 {autocompletePreview.map((city) => (
                     <li key={city.Key} id={city.Key} onClick={onClickHandler} className="city-li" >
                         {city.LocalizedName} , {city.Country.LocalizedName}

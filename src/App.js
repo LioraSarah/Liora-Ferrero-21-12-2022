@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { Header } from './components/header/Header';
 import { Home } from './components/home/Home';
 import { Favorites } from './components/favorites/Favorites';
-import { clearAutocomplete, selectAutocompleteList } from './features/search/searchSlice.js';
+import { clearAutocomplete, selectAutocompleteList, clearSearchTerm } from './features/search/searchSlice.js';
 import { loadCurrentCondition, selectCurrentCityKey } from './features/currentCity/correntCitySlice';
 import { loadFiveDays, selectIsMetric } from './features/fiveDays/fiveDaysSlice';
 import { useLocation } from 'react-router-dom';
@@ -24,6 +24,8 @@ function App() {
     if (location.pathname === '/') {
       dispatch(loadCurrentCondition({ key: cityKey }));
       dispatch(loadFiveDays({ key: cityKey, isMetric: isMetric }));
+    } else { //if we rout to other routes, clear the search
+      dispatch(clearSearchTerm());
     }
   }, [dispatch, location, cityKey, isMetric]);
 
